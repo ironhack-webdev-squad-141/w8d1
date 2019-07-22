@@ -1,5 +1,6 @@
 import React, { Component } from "react";
-import axios from "axios";
+import { Form, Button } from "react-bootstrap";
+import { signup } from "../services/api";
 
 export default class Signup extends Component {
   state = {
@@ -16,14 +17,12 @@ export default class Signup extends Component {
   };
 
   handleSubmit = event => {
-    const { username, password } = this.state; // const username = this.state.username; const password = this.state.password
-
+    const { username, password } = this.state;
     event.preventDefault();
 
-    axios
-      .post("/api/auth/signup", { username: username, password: password })
-      .then(response => {
-        this.props.setUser(response.data);
+    signup(username, password)
+      .then(data => {
+        this.props.setUser(data);
         this.props.history.push("/projects");
       })
       .catch(err => {
@@ -32,29 +31,31 @@ export default class Signup extends Component {
   };
 
   render() {
-    // form w/ username password inputs
     return (
-      <form onSubmit={this.handleSubmit}>
-        <label htmlFor="username">Username:</label>
-        <input
-          type="text"
-          name="username"
-          id="username"
-          value={this.state.username}
-          onChange={this.handleChange}
-        />
-        <br />
-        <label htmlFor="password">Password:</label>
-        <input
-          type="password"
-          name="password"
-          id="password"
-          value={this.state.password}
-          onChange={this.handleChange}
-        />
-        <br />
-        <button type="submit">Signup</button>
-      </form>
+      <Form onSubmit={this.handleSubmit}>
+        <Form.Group>
+          <Form.Label htmlFor="username">Username:</Form.Label>
+          <Form.Control
+            type="text"
+            name="username"
+            id="username"
+            value={this.state.username}
+            onChange={this.handleChange}
+          />
+        </Form.Group>
+        <Form.Group>
+          <Form.Label htmlFor="password">Password:</Form.Label>
+          <Form.Control
+            type="password"
+            name="password"
+            id="password"
+            value={this.state.password}
+            onChange={this.handleChange}
+          />
+        </Form.Group>
+
+        <Button type="submit">Signup</Button>
+      </Form>
     );
   }
 }

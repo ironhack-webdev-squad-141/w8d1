@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { login } from "../services/api";
+import { Form, Button } from "react-bootstrap";
 
 export default class Login extends Component {
   state = {
@@ -16,7 +17,7 @@ export default class Login extends Component {
   };
 
   handleSubmit = event => {
-    const { username, password } = this.state; // const username = this.state.username; const password = this.state.password
+    const { username, password } = this.state;
 
     event.preventDefault();
 
@@ -31,29 +32,31 @@ export default class Login extends Component {
   };
 
   render() {
-    // form w/ username password inputs
     return (
-      <form onSubmit={this.handleSubmit}>
-        <label htmlFor="username">Username:</label>
-        <input
-          type="text"
-          name="username"
-          id="username"
-          value={this.state.username}
-          onChange={this.handleChange}
-        />
-        <br />
-        <label htmlFor="password">Password:</label>
-        <input
-          type="password"
-          name="password"
-          id="password"
-          value={this.state.password}
-          onChange={this.handleChange}
-        />
-        <br />
-        <button type="submit">Login</button>
-      </form>
+      <Form onSubmit={this.handleSubmit}>
+        <Form.Group>
+          <Form.Label htmlFor="username">Username:</Form.Label>
+          <Form.Control
+            type="text"
+            name="username"
+            id="username"
+            value={this.state.username}
+            onChange={this.handleChange}
+          />
+        </Form.Group>
+        <Form.Group>
+          <Form.Label htmlFor="password">Password:</Form.Label>
+          <Form.Control
+            type="password"
+            name="password"
+            id="password"
+            value={this.state.password}
+            onChange={this.handleChange}
+          />
+        </Form.Group>
+
+        <Button type="submit">Login</Button>
+      </Form>
     );
   }
 }
