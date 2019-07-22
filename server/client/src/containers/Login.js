@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import axios from "axios";
+import { login } from "../services/api";
 
 export default class Login extends Component {
   state = {
@@ -20,10 +20,9 @@ export default class Login extends Component {
 
     event.preventDefault();
 
-    axios
-      .post("/api/auth/login", { username: username, password: password })
-      .then(response => {
-        this.props.setUser(response.data);
+    login(username, password)
+      .then(data => {
+        this.props.setUser(data);
         this.props.history.push("/projects");
       })
       .catch(err => {
@@ -32,7 +31,6 @@ export default class Login extends Component {
   };
 
   render() {
-    console.log(this.props);
     // form w/ username password inputs
     return (
       <form onSubmit={this.handleSubmit}>
