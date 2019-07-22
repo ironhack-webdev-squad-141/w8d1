@@ -66,7 +66,7 @@ app.use(favicon(path.join(__dirname, "public", "images", "favicon.ico")));
 const MongoStore = require('connect-mongo')(session)
 
 app.use(session({
-    secret: 'keyboard cat',
+    secret: process.env.SESSION_SECRET,
     resave: false,
     saveUninitialized: false,
     store: new MongoStore({
