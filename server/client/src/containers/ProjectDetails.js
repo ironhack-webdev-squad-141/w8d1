@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import EditProject from "../components/Project/Edit";
 import TaskForm from "../components/Task/Form";
 import TaskList from "../components/Task/List";
+import { Button } from "react-bootstrap";
 import axios from "axios";
 
 export default class ProjectDetails extends Component {
@@ -69,9 +70,11 @@ export default class ProjectDetails extends Component {
       <div>
         <h1>{this.state.title}</h1>
         <p>{this.state.description}</p>
-        <button onClick={this.toggleEdit}>Show Edit</button>
-        <button onClick={this.handleDelete}>Delete</button>
-        <button onClick={this.toggleTaskForm}>Add Task</button>
+        <Button onClick={this.toggleEdit}>Show Edit</Button>
+        <Button onClick={this.toggleTaskForm}>Add Task</Button>
+        <Button variant="danger" onClick={this.handleDelete}>
+          Delete
+        </Button>
 
         {this.state.editForm && (
           <EditProject

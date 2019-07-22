@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import axios from "axios";
-
+import { Form, Button } from "react-bootstrap";
 export default class ProjectForm extends Component {
   state = {
     title: "",
@@ -39,27 +39,30 @@ export default class ProjectForm extends Component {
 
   render() {
     return (
-      <form onSubmit={this.handleSubmit}>
-        <label htmlFor="title">Title: </label>
-        <input
-          type="text"
-          onChange={this.handleChange}
-          id="title"
-          name="title"
-          value={this.state.title}
-        />
+      <Form onSubmit={this.handleSubmit}>
+        <Form.Group>
+          <Form.Label htmlFor="title">Title: </Form.Label>
+          <Form.Control
+            type="text"
+            onChange={this.handleChange}
+            id="title"
+            name="title"
+            value={this.state.title}
+          />
+        </Form.Group>
+        <Form.Group>
+          <Form.Label htmlFor="description">Description: </Form.Label>
+          <Form.Control
+            onChange={this.handleChange}
+            type="text"
+            name="description"
+            id="description"
+            value={this.state.description}
+          />
+        </Form.Group>
 
-        <label htmlFor="description">Description: </label>
-        <input
-          onChange={this.handleChange}
-          type="text"
-          name="description"
-          id="description"
-          value={this.state.description}
-        />
-
-        <button type="submit">Add Project</button>
-      </form>
+        <Button type="submit">Add Project</Button>
+      </Form>
     );
   }
 }

@@ -1,6 +1,8 @@
 import React from "react";
 import { Switch, Route } from "react-router-dom";
 import Navbar from "./components/Navbar";
+import "bootstrap/dist/css/bootstrap.css";
+
 import "./App.css";
 
 import Projects from "./containers/Projects";

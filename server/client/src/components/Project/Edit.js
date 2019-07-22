@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Form, Button } from "react-bootstrap";
 import axios from "axios";
 
 class EditProject extends Component {
@@ -35,24 +36,28 @@ class EditProject extends Component {
       <div>
         <hr />
         <h3>Edit project: </h3>
-        <form onSubmit={this.handleSubmit}>
-          <label>Title:</label>
-          <input
-            type="text"
-            name="title"
-            value={this.state.title}
-            onChange={this.handleChange}
-          />
-          <label>Description:</label>
-          <input
-            type="text"
-            name="description"
-            value={this.state.description}
-            onChange={this.handleChange}
-          />
+        <Form onSubmit={this.handleSubmit}>
+          <Form.Group>
+            <Form.Label>Title:</Form.Label>
+            <Form.Control
+              type="text"
+              name="title"
+              value={this.state.title}
+              onChange={this.handleChange}
+            />
+          </Form.Group>
+          <Form.Group>
+            <Form.Label>Description:</Form.Label>
+            <Form.Control
+              type="text"
+              name="description"
+              value={this.state.description}
+              onChange={this.handleChange}
+            />
+          </Form.Group>
 
-          <button type="submit">Edit</button>
-        </form>
+          <Button type="submit">Edit</Button>
+        </Form>
       </div>
     );
   }

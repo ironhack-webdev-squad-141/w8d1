@@ -1,17 +1,17 @@
 import React from "react";
 import { Link } from "react-router-dom";
-
-const Navbar = () => {
+import { Navbar } from "react-bootstrap";
+const CustomNavbar = () => {
   return (
-    <nav className="nav-style">
-      <ul>
-        <li>
-          <Link to="/">Home</Link>
-          <Link to="/projects">Projects</Link>
-        </li>
-      </ul>
-    </nav>
+    <Navbar className="nav" bg="dark">
+      <Navbar.Brand>
+        <Link to="/">Home</Link>
+      </Navbar.Brand>
+      <Navbar.Brand>
+        <Link to="/projects">Projects</Link>
+      </Navbar.Brand>
+    </Navbar>
   );
 };
 
-export default Navbar;
+export default CustomNavbar;
