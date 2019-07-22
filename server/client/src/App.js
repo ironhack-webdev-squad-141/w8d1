@@ -9,10 +9,11 @@ import Projects from "./containers/Projects";
 import ProjectDetails from "./containers/ProjectDetails";
 import TaskDetails from "./containers/TaskDetails";
 import Signup from "./containers/Signup";
+import Login from "./containers/Login";
 
 class App extends React.Component {
   state = {
-    user: null
+    user: this.props.user
   };
 
   setUser = user => {
@@ -29,8 +30,15 @@ class App extends React.Component {
           <Route
             exact
             path="/signup"
-            render={() => {
-              return <Signup setUser={this.setUser} />;
+            render={props => {
+              return <Signup setUser={this.setUser} {...props} />;
+            }}
+          />
+          <Route
+            exact
+            path="/login"
+            render={props => {
+              return <Login setUser={this.setUser} {...props} />;
             }}
           />
           <Route exact path="/projects" component={Projects} />
