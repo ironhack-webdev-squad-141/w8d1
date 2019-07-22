@@ -60,4 +60,13 @@ router.post("/login", (req, res) => {
   })(req, res);
 });
 
+router.post("/logout", (req, res) => {
+  req.logout();
+  res.status(200).json({ message: "User was successfully logged out" });
+});
+
+router.get("/loggedin", (req, res) => {
+  res.json(req.user);
+});
+
 module.exports = router;

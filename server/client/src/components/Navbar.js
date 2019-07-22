@@ -4,7 +4,7 @@ import { Navbar } from "react-bootstrap";
 
 const CustomNavbar = () => {
   return (
-    <Navbar className="nav" bg="dark">
+    <Navbar className="nav" bg="primary">
       <Navbar.Brand>
         <Link to="/">Home</Link>
       </Navbar.Brand>
