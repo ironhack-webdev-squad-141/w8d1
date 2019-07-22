@@ -36,7 +36,7 @@ router.post("/", (req, res) => {
   const { title, description } = req.body;
 
   // Project.create({ title: title, description: description })
-  Project.create({ title, description })
+  Project.create({ title, description, owner: req.user._id })
     .then(project => {
       res.json(project);
     })

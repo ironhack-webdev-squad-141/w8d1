@@ -40,8 +40,11 @@ export default class ProjectForm extends Component {
   render() {
     return (
       <Form onSubmit={this.handleSubmit}>
+          {/* all groups (label + input) are grouped in a Form.Group */}
         <Form.Group>
+            {/* <label></label> */}
           <Form.Label htmlFor="title">Title: </Form.Label>
+          {/* <input /> */}
           <Form.Control
             type="text"
             onChange={this.handleChange}
